@@ -5,7 +5,7 @@ import {PrivateRoute} from "./Components/MainInput/PrivateRoute";
 import ScrollToTop from "./Components/MainInput/ScrollToTop";
 import Hello from "./Components/Hello";
 import Login from "./Components/login";
-export default () => (
+export default props => (
     <BrowserRouter>
         <ScrollToTop>
             <Switch>
