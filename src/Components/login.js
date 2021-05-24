@@ -1,10 +1,18 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
+import Topbar from "./MainInput/TopBar";
 class Login extends React.Component {
-    componentDidMount() {
+    logIn() {
         localStorage.setItem('user', 'tai')
     }
     render() {
-        return <h1>Hello Logined</h1>
+        return <div>
+            <Topbar currentPath='/'/>
+            <h1>Hello Logined</h1>
+            <Button
+                onClick={(e) => this.logIn()}>Login</Button>
+
+        </div>
     }
 }
 export default Login;

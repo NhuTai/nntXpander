@@ -1,5 +1,6 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
+import Topbar from "./TopBar";
 
 class Dashboard extends React.Component {
     logOut () {
@@ -7,9 +8,11 @@ class Dashboard extends React.Component {
         localStorage.removeItem('user')
     }
     render() {
-        return <div><h1>This is Main Screen test</h1>
+        return <div>
+            <Topbar currentPath='/'/>
+            <h1>This is Main Screen</h1>
             <Button
-                    onClick={(e) => this.logOut()}>Confirm</Button>
+                    onClick={(e) => this.logOut()}>LogOut</Button>
 
         </div>
     }
