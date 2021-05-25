@@ -1,20 +1,34 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
 import Topbar from "./TopBar";
+import {withRouter} from "react-router-dom";
+import withStyles from "@material-ui/core/styles/withStyles";
 
-class Dashboard extends React.Component {
-    logOut () {
-        console.log("aaa")
-        localStorage.removeItem('user')
+const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.grey['100'],
+        overflow: 'hidden',
+        backgroundSize: 'cover',
+        backgroundPosition: '0 400px',
+        paddingBottom: 200
+    },
+    signoutButton: {
+        paddingLeft: 10,
+        backgroundColor: 'white'
+    },
+    paper: {
+        padding: theme.spacing.unit * 3,
+        textAlign: 'left',
+        color: theme.palette.text.secondary
     }
+})
+class Dashboard extends React.Component {
     render() {
-        return <div>
+        const {classes} = this.props;
+        return <div className={[classes.root, classes.paper]}>
             <Topbar currentPath='/'/>
             <h1>This is Main Screen</h1>
-            <Button
-                    onClick={(e) => this.logOut()}>LogOut</Button>
-
         </div>
     }
 }
-export default Dashboard;
+export default withRouter(withStyles(styles)(Dashboard));

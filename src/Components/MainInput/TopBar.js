@@ -77,12 +77,13 @@ const styles = theme => ({
         minWidth: 'auto'
     },
     signout: {
-        position: 'absolute',
         right: 20,
+        paddingLeft: 20,
         paddingTop: 20,
         paddingBottom: 20,
     },
     signoutButton: {
+        paddingLeft: 20,
         backgroundColor: 'white'
     }
 })
@@ -124,13 +125,13 @@ class Topbar extends Component {
     }
 
     signout() {
+        localStorage.removeItem('user')
         window.location.reload();
     }
 
     render() {
 
         const {classes} = this.props;
-
         let content;
         content = <div className={classes.tabContainer}>
             <SwipeableDrawer anchor="left" open={this.state.menuDrawer}
@@ -168,7 +169,7 @@ class Topbar extends Component {
         return (
             <AppBar position="absolute" color="default" className={classes.appBar}>
                 <Toolbar>
-                    <Grid container spacing={24} alignItems="baseline">
+                    <Grid container spacing={26} alignItems="baseline">
                         <Grid item xs={12} className={classes.flex}>
                             <div className={classes.iconContainer}>
                                 <IconButton onClick={this.mobileMenuOpen} className={classes.iconButton} color="inherit"
@@ -189,9 +190,11 @@ class Topbar extends Component {
                                     </div>
 
                                     {content}
-                                    <div className={classes.signout}>
-                                        <Button className={classes.signoutButton} onClick={this.signout}>Sign
-                                            Out</Button>
+                                    <div className={classes.tabContainer}>
+                                        <div className={classes.signout}>
+                                            <Button className={classes.signoutButton} onClick={this.signout}>Sign
+                                                Out</Button>
+                                        </div>
                                     </div>
                                 </React.Fragment>
                             )}
