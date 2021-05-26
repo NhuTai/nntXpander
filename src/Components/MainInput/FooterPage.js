@@ -1,19 +1,19 @@
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
-
 const FooterPage = () => {
+
     return (
         <MDBFooter color="blue" >
-            <MDBContainer fluid >
+            <MDBContainer fluid>
                 <MDBRow>
-                    <MDBCol md="6">
+                    <MDBCol md="4">
                         <h5 className="title">Footer Content</h5>
                         <p>
                             Here you can use rows and columns here to organize your footer
                             content.
                         </p>
                     </MDBCol>
-                    <MDBCol md="6">
+                    <MDBCol md="4">
                         <h5 className="title">Links</h5>
                         <ul>
                             <li className="list-unstyled">
@@ -33,9 +33,9 @@ const FooterPage = () => {
                 </MDBRow>
             </MDBContainer>
             <div className="footer-copyright text-center py-3">
-                <MDBContainer fluid>
+                <div fluid>
                     &copy; {new Date().getFullYear()} Copyright: <a href="https://www.google.com"> NNT Expand</a>
-                </MDBContainer>
+                </div>
             </div>
         </MDBFooter>
     );

@@ -31,7 +31,7 @@ class Login extends React.Component {
     render() {
         const {classes} = this.props;
         return <div className={[classes.root, classes.paper]}>
-            <Topbar currentPath='/'/>
+            <Topbar currentPath='/login'/>
             <h1>Hello Logined</h1>
             <Button className={classes.signoutButton}
                 onClick={(e) => this.logIn()}>Login</Button>

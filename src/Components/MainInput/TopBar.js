@@ -96,6 +96,7 @@ class Topbar extends Component {
     };
 
     handleChange = (event, value) => {
+        console.log('value', value)
         this.setState({value});
     };
 
@@ -184,7 +185,7 @@ class Topbar extends Component {
                                     </Link>
                                 </Typography>
                             </div>
-                            {!this.props.noTabs && (
+                            {(
                                 <React.Fragment>
                                     <div className={classes.productLogo}>
                                     </div>

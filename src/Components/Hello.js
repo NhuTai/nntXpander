@@ -28,7 +28,7 @@ class Hello extends React.Component {
     render() {
         const {classes} = this.props;
         return <div className={[classes.root, classes.paper]}>
-            <Topbar currentPath='/'/>
+            <Topbar currentPath='/hello'/>
             <h1>Hello {this.props.name}</h1>
         </div>
     }
