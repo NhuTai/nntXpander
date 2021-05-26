@@ -1,42 +1,40 @@
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import {red} from "@material-ui/core/colors";
 const FooterPage = () => {
 
     return (
         <MDBFooter color="blue" >
             <MDBContainer fluid>
-                <MDBRow>
+                <MDBRow className='footer'>
                     <MDBCol md="4">
-                        <h5 className="title">Footer Content</h5>
+                        <h2 className="title">NNT Solution</h2>
                         <p>
-                            Here you can use rows and columns here to organize your footer
-                            content.
+                            NNT Solution is professional company working on Information Technology.
                         </p>
                     </MDBCol>
                     <MDBCol md="4">
                         <h5 className="title">Links</h5>
                         <ul>
                             <li className="list-unstyled">
-                                <a href="#!">Link 1</a>
+                                <a href="#!">About Us</a>
                             </li>
                             <li className="list-unstyled">
-                                <a href="#!">Link 2</a>
+                                <a href="#!">Our Company</a>
                             </li>
                             <li className="list-unstyled">
-                                <a href="#!">Link 3</a>
+                                <a href="#!">Our Products</a>
                             </li>
                             <li className="list-unstyled">
-                                <a href="#!">Link 4</a>
+                                <a href="#!">Our Resources</a>
                             </li>
                         </ul>
+                        <div fluid>
+                            &copy; {new Date().getFullYear()} Copyright: <a href="https://www.google.com"> NNT Expand</a>
+                        </div>
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
-            <div className="footer-copyright text-center py-3">
-                <div fluid>
-                    &copy; {new Date().getFullYear()} Copyright: <a href="https://www.google.com"> NNT Expand</a>
-                </div>
-            </div>
         </MDBFooter>
     );
 }

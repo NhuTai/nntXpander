@@ -5,7 +5,7 @@ const Menu = [
     },
     {
         label: "Hello",
-        pathname: "/hello"
+        pathname: "/welcome"
     },
     {
         label: "Login",

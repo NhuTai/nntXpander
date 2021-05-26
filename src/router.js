@@ -13,7 +13,7 @@ const Rounter = () => {
         <ScrollToTop>
             <Switch>
                 <PrivateRoute exact path='/' component={Dashboard}/>
-                <Route exact path='/hello' component={Hello}/>
+                <Route exact path='/welcome' component={Hello}/>
                 <Route exact path='/login' component={Login}/>
             </Switch>
         </ScrollToTop>

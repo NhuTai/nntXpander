@@ -28,13 +28,16 @@ class Hello extends React.Component {
     render() {
         const {classes} = this.props;
         return <div className={[classes.root, classes.paper]}>
-            <Topbar currentPath='/hello'/>
-            <h1>Hello {this.props.name}</h1>
+            <Topbar currentPath='/welcome'/>
+            <h1>Hello {this.props.name}!</h1>
+            <p>
+                Nice to meet you here. Hope you well have nice time here.
+            </p>
         </div>
     }
 }
 
 Hello.defaultProps = {
-    name: "world",
+    name: "There",
 };
 export default withRouter(withStyles(styles)(Hello));
