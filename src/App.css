@@ -33,11 +33,13 @@
 }
 .col-md-3,
 .col-md-4 {
-  padding: 1rem;
   background-color: #4287f5;
   border: 2px solid #fff;
   color: #fff;
   text-align: center;
+}
+.col-md-4 {
+  background-image: -moz-element('');
 }
 @keyframes App-logo-spin {
   from {
