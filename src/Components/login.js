@@ -33,8 +33,24 @@ const styles = theme => ({
     }
 })
 class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: '',
+            password: ''
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+    }
     logIn() {
-        localStorage.setItem('user', 'tai')
+        console.log('tai121212 - Nhutai::073')
+        if(this.state.username === 'tai121212' && this.state.password === 'Nhutai::073') {
+            localStorage.setItem('user', 'tai')
+        }
+    }
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
+        console.log(this.state);
     }
     render() {
         const {classes} = this.props;
