@@ -10,6 +10,10 @@ const Menu = [
     {
         label: "Login",
         pathname: "/login"
+    },
+    {
+        label: "Inox",
+        pathname: "/inox"
     }
 ];
 

@@ -32,6 +32,11 @@ class SnakeGame extends React.Component {
     componentDidMount() {
         this.initGame()
         window.addEventListener('keydown', this.handleKeyDown)
+        window.addEventListener("keydown", function(e) {
+            if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+                e.preventDefault();
+            }
+        }, false);
         this.gameLoop()
     }
 
