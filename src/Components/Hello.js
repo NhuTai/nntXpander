@@ -2,6 +2,7 @@ import React from "react";
 import Topbar from "./MainInput/TopBar";
 import {withRouter} from "react-router-dom";
 import withStyles from "@material-ui/core/styles/withStyles";
+import SnakeGame from "./home/SnakeGame";
 
 const styles = theme => ({
     root: {
@@ -33,6 +34,7 @@ class Hello extends React.Component {
             <p>
                 Nice to meet you here. Hope you well have nice time here.
             </p>
+            <SnakeGame></SnakeGame>
         </div>
     }
 }
