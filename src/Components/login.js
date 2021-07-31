@@ -54,7 +54,7 @@ class Login extends React.Component {
 
         var config = {
             method: 'post',
-            url: 'http://localhost:8080/users/test',
+            url: 'https://vercel-mu-seven.vercel.app/users/login',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -96,16 +96,6 @@ class Login extends React.Component {
                     control={<Checkbox value="remember" color="primary"/>}
                     label="Remember me"
                 />
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    onClick={(e) => this.logIn()}
-                >
-                    Login
-                </Button>
             </form>
 
             <Button
@@ -116,7 +106,7 @@ class Login extends React.Component {
                 className={classes.button}
                 onClick={(e) => this.logIn()}
             >
-                test
+                Login
             </Button>
         </div>
     }

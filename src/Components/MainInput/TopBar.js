@@ -90,10 +90,14 @@ const styles = theme => ({
 
 class Topbar extends Component {
 
-    state = {
-        value: 0,
-        menuDrawer: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: 0,
+            menuDrawer: false,
+            logined: false,
+        }
+    }
 
     handleChange = (event, value) => {
         console.log('value', value)
@@ -109,6 +113,8 @@ class Topbar extends Component {
     }
 
     componentDidMount() {
+        const user = localStorage.getItem('user');
+        console.log(user);
         window.scrollTo(0, 0);
     }
 
@@ -196,8 +202,10 @@ class Topbar extends Component {
                                     {content}
                                     <div className={classes.tabContainer}>
                                         <div className={classes.signout}>
+                                            {this.state.logined != 'null' &&
                                             <Button className={classes.signoutButton} onClick={this.signout}>Sign
                                                 Out</Button>
+                                            }
                                         </div>
                                     </div>
                                 </React.Fragment>
