@@ -17,7 +17,7 @@ const FooterPage = () => {
                             <h5>Links</h5>
                             <ul>
                                 <li className="list-unstyled">
-                                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdznU-cIF06pNQ2mNsU3D1yo0V5hgWKQhhI8IzUiQgrgEcQag/viewform" target='_blank'>Liên Hệ Đặt Hàng</a>
+                                    <a href="#">Liên Hệ Đặt Hàng</a>
                                 </li>
                                 <li className="list-unstyled">
                                     <a href="#!">Our Company</a>
