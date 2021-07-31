@@ -202,7 +202,7 @@ class Topbar extends Component {
                                     {content}
                                     <div className={classes.tabContainer}>
                                         <div className={classes.signout}>
-                                            {this.state.logined != 'null' &&
+                                            {this.state.logined !== 'null' &&
                                             <Button className={classes.signoutButton} onClick={this.signout}>Sign
                                                 Out</Button>
                                             }
