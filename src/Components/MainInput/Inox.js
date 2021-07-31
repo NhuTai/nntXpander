@@ -41,7 +41,7 @@ class Inox extends React.Component {
             <Product MH= '01' price = '2.000.000' imgUrl={lanCan01}></Product>
             <Product MH= '02' price = '2.500.000' imgUrl={lanCan02}></Product>
             <Product MH= '03' price = '1.500.000' imgUrl={lanCan03}></Product>
-            
+
         </div>
     }
 }

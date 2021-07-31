@@ -43,10 +43,34 @@ class Login extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
     logIn() {
-        console.log('tai121212 - Nhutai::073')
-        if(this.state.username === 'tai121212' && this.state.password === 'Nhutai::073') {
-            localStorage.setItem('user', 'tai')
-        }
+        const {username, password} = this.state;
+        console.log("--------", username , '---', password);
+
+        var axios = require('axios');
+        var data = JSON.stringify({
+            "name": username,
+            "pass": password
+        });
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8080/users/test',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data : data
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                if(JSON.stringify(response.data) === "1"){
+                    localStorage.setItem('user', username);
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
@@ -57,7 +81,7 @@ class Login extends React.Component {
         return <div className={[classes.root, classes.paper]}>
             <Topbar currentPath='/login'/>
             <h1>It seems you need to login</h1>
-            <form className={classes.form} onSubmit={this.handleSubmit}>
+            <form className={classes.form} onSubmit={this.logIn}>
                 <FormControl margin="normal" required fullWidth>
                     <InputLabel htmlFor="username">Username</InputLabel>
                     <Input id="username" name="username" autoComplete="username" autoFocus
@@ -84,6 +108,16 @@ class Login extends React.Component {
                 </Button>
             </form>
 
+            <Button
+                type="button"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                onClick={(e) => this.logIn()}
+            >
+                test
+            </Button>
         </div>
     }
 }
