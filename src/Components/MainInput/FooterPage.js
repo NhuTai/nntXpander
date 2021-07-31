@@ -17,7 +17,7 @@ const FooterPage = () => {
                             <h5>Links</h5>
                             <ul>
                                 <li className="list-unstyled">
-                                    <a href="#">Liên Hệ Đặt Hàng</a>
+                                    <a href="#!">Liên Hệ Đặt Hàng</a>
                                 </li>
                                 <li className="list-unstyled">
                                     <a href="#!">Our Company</a>
@@ -29,7 +29,7 @@ const FooterPage = () => {
                                     <a href="#!">Our Resources</a>
                                 </li>
                             </ul>
-                            &copy; {new Date().getFullYear()} Copyright: <a href="#"> NNT
+                            &copy; {new Date().getFullYear()} Copyright: <a href="#!"> NNT
                             Expand</a>
                         </div>
                     </MDBCol>
