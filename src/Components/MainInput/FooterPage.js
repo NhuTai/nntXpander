@@ -29,7 +29,7 @@ const FooterPage = () => {
                                     <a href="#!">Our Resources</a>
                                 </li>
                             </ul>
-                            &copy; {new Date().getFullYear()} Copyright: <a href="https://docs.google.com/forms/d/e/1FAIpQLSdznU-cIF06pNQ2mNsU3D1yo0V5hgWKQhhI8IzUiQgrgEcQag/viewform" target='_blank'> NNT
+                            &copy; {new Date().getFullYear()} Copyright: <a href="#"> NNT
                             Expand</a>
                         </div>
                     </MDBCol>
