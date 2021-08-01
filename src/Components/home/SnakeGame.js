@@ -250,7 +250,7 @@ class SnakeGame extends React.Component {
 
         var config = {
             method: 'post',
-            url: 'http://localhost:8080/users/highscore',
+            url: 'https://vercel-mu-seven.vercel.app/users/highscore',
             headers: {
                 'Content-Type': 'application/json'
             },
