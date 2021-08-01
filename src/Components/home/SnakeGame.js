@@ -13,7 +13,7 @@ class SnakeGame extends React.Component {
             height: 0,
             blockWidth: 0,
             blockHeight: 0,
-            gameLoopTimeout: 50,
+            gameLoopTimeout: 100,
             timeoutId: 0,
             startSnakeSize: 0,
             snake: [],
@@ -37,7 +37,7 @@ class SnakeGame extends React.Component {
                 e.preventDefault();
             }
         }, false);
-        this.gameLoop()
+        this.gameLoop();
     }
 
     initGame() {
@@ -87,6 +87,7 @@ class SnakeGame extends React.Component {
             snake,
             apple: { Xpos: appleXpos, Ypos: appleYpos },
         })
+        this.getScore(0);
     }
 
     gameLoop() {
@@ -150,7 +151,7 @@ class SnakeGame extends React.Component {
             direction: 'right',
             directionChanged: false,
             isGameOver: false,
-            gameLoopTimeout: 50,
+            gameLoopTimeout: 100,
             snakeColor: this.getRandomColor(),
             appleColor: this.getRandomColor(),
             score: 0,
@@ -226,7 +227,7 @@ class SnakeGame extends React.Component {
             }
 
             // decrease the game loop timeout
-            if (gameLoopTimeout > 25) gameLoopTimeout -= 0.5
+            if (gameLoopTimeout > 55) gameLoopTimeout -= 0.5
 
             this.setState({
                 snake,
@@ -239,12 +240,46 @@ class SnakeGame extends React.Component {
         }
     }
 
+    getScore(score) {
+        var axios = require('axios');
+        var data = JSON.stringify({
+            "name": "ut",
+            "pass": "234",
+            "score": score
+        });
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8080/users/highscore',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: data
+        };
+
+        axios(config)
+            .then(
+                response => {
+                    console.log(response.data);
+                    console.log(response.data.score);
+                    if(response.data.score > this.state.highScore){
+                        this.setState({
+                            highScore: response.data.score
+                        });
+                    }
+                })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     tryToEatSnake() {
         let snake = this.state.snake
 
         for (let i = 1; i < snake.length; i++) {
-            if (snake[0].Xpos === snake[i].Xpos && snake[0].Ypos === snake[i].Ypos)
-                this.setState({ isGameOver: true })
+            if (snake[0].Xpos === snake[i].Xpos && snake[0].Ypos === snake[i].Ypos) {
+                this.setState({isGameOver: true})
+                this.getScore(this.state.highScore);
+            }
         }
     }
 
