@@ -8,6 +8,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
+import ReactLoading from 'react-loading';
+import '../App.css';
 
 const styles = theme => ({
     root: {
@@ -32,19 +34,27 @@ const styles = theme => ({
         color: theme.palette.grey[100]
     }
 })
+
 class Login extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            show: true,
+            fail: true,
+            name: '',
+            logined: true
         }
 
         this.handleChange = this.handleChange.bind(this);
     }
+
     logIn() {
+
         const {username, password} = this.state;
-        console.log("--------", username , '---', password);
+        console.log("--------", username, '---', password);
 
         var axios = require('axios');
         var data = JSON.stringify({
@@ -58,57 +68,88 @@ class Login extends React.Component {
             headers: {
                 'Content-Type': 'application/json'
             },
-            data : data
+            data: data
         };
 
+        this.setState({
+            show: false,
+            fail: true
+        });
         axios(config)
-            .then(function (response) {
-                console.log(JSON.stringify(response.data));
-                if(JSON.stringify(response.data) === "1"){
-                    localStorage.setItem('user', username);
-                }
-            })
+            .then(
+                response => {
+                    console.log(response.data);
+                    if (response.data === 1) {
+                        localStorage.setItem('user', username);
+                        this.setState({logined: true});
+                    } else {
+                        this.setState({fail: false})
+                    }
+                    this.setState({
+                        show: true
+                    });
+                })
             .catch(function (error) {
                 console.log(error);
             });
     }
+
+    componentDidMount() {
+        const user = localStorage.getItem("user");
+        console.log(typeof user, '-----');
+        if(user === null){
+            console.log("nullll");
+            this.setState({logined: false});
+        }
+
+    }
+
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value});
         console.log(this.state);
     }
+
     render() {
         const {classes} = this.props;
         return <div className={[classes.root, classes.paper]}>
             <Topbar currentPath='/login'/>
-            <h1>It seems you need to login</h1>
-            <form className={classes.form} onSubmit={this.logIn}>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="username">Username</InputLabel>
-                    <Input id="username" name="username" autoComplete="username" autoFocus
-                           onChange={this.handleChange}/>
-                </FormControl>
-                <FormControl margin="normal" required fullWidth>
-                    <InputLabel htmlFor="password">Password</InputLabel>
-                    <Input name="password" type="password" id="password" autoComplete="current-password"
-                           onChange={this.handleChange}/>
-                </FormControl>
-                <FormControlLabel
-                    control={<Checkbox value="remember" color="primary"/>}
-                    label="Remember me"
-                />
-            </form>
 
-            <Button
-                type="button"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={(e) => this.logIn()}
-            >
-                Login
-            </Button>
+            <div className="loadingCenter" hidden={this.state.show}>
+                <ReactLoading type="spin" color="#fff" height={167} width={175}/>
+            </div>
+            <div hidden={this.state.logined}>
+                <h1>You need to login</h1>
+                <form className={classes.form} onSubmit={this.logIn}>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="username">Username</InputLabel>
+                        <Input id="username" name="username" autoComplete="username" autoFocus
+                               onChange={this.handleChange}/>
+                    </FormControl>
+                    <FormControl margin="normal" required fullWidth>
+                        <InputLabel htmlFor="password">Password</InputLabel>
+                        <Input name="password" type="password" id="password" autoComplete="current-password"
+                               onChange={this.handleChange}/>
+                    </FormControl>
+                    <FormControlLabel
+                        control={<Checkbox value="remember" color="primary"/>}
+                        label="Remember me"
+                    />
+                </form>
+
+                <h4 hidden={this.state.fail}>User name or Pass word not correct!</h4>
+                <Button
+                    type="button"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    onClick={(e) => this.logIn()}
+                >
+                    Login
+                </Button>
+            </div>
         </div>
     }
 }
+
 export default withRouter(withStyles(styles)(Login));
