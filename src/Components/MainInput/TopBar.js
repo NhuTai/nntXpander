@@ -131,6 +131,9 @@ class Topbar extends Component {
         if (this.props.currentPath.startsWith('/inox')) {
             return 3
         }
+        if (this.props.currentPath.startsWith('/duocsu')) {
+            return 4
+        }
 
     }
 

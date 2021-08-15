@@ -14,6 +14,10 @@ const Menu = [
     {
         label: "Inox",
         pathname: "/inox"
+    },
+    {
+        label: "Chú Dược Sư",
+        pathname: "/duocsu"
     }
 ];
 

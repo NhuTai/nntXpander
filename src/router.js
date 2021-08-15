@@ -6,6 +6,7 @@ import ScrollToTop from "./Components/MainInput/ScrollToTop";
 import Hello from "./Components/Hello";
 import Login from "./Components/login";
 import Inox from "./Components/MainInput/Inox";
+import Duocsu from "./Components/MainInput/Duocsu";
 import {render} from "@testing-library/react";
 
 const Rounter = () => {
@@ -17,6 +18,7 @@ const Rounter = () => {
                 <Route exact path='/welcome' component={Hello}/>
                 <Route exact path='/login' component={Login}/>
                 <Route exact path='/inox' component={Inox}/>
+                <Route exact path='/duocsu' component={Duocsu}/>
             </Switch>
         </ScrollToTop>
     </BrowserRouter>
